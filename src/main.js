@@ -1,3 +1,4 @@
+// https://github.com/JyotishGift/react-basic-OkYesAnap.git
 // 1 - название тега который нужно сделать - стринг
 // 2 - props
 // 3 - cheldren... или другие элементы или строка или массив

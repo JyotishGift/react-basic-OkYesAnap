@@ -6,7 +6,7 @@ class Search extends Component {
         return (
             <div className="search-bar navbar">
                 <input type="text" placeholder="Search" value={this.props.searchString}
-                 onKeyUp={this.props.searchChange} />
+                 onChange={this.props.searchChange} />
             </div>
         )
     }

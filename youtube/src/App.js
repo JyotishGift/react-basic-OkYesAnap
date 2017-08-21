@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.searchingData = {};
-    this.state = { search: '', imgData: [{}, {}, {}, {}, {}] };
+    this.state = { search: '', currentVideo: 0, imgData: [{}, {}, {}, {}, {}] };
   }
   upDate() {
     YTSearch({ key: API_KEY, term: this.state.search },
@@ -28,16 +28,19 @@ class App extends Component {
             })
           })
         });
-        console.log(data)
+//        console.log(data)
       });
-    console.log(this.state.search);
   }
   searchChange(e) {
-    let { search } = this.state;
-    this.setState({ search: (e.keyCode !== 8 ? search += e.key : search.slice(0, -1)) });
+    this.setState({ search: e.target.value });
     this.upDate();
   }
-
+  videoChoice(e){
+    this.setState({currentVideo: (e.target.id ? e.target.id : this.elemIdFinder(e.target))});
+  }
+  elemIdFinder(elem){
+    return(elem.parentElement.id ? elem.parentElement.id : this.elemIdFinder(elem.parentElement));
+  }
   render() {
     return (
       <main className="container">
@@ -47,10 +50,13 @@ class App extends Component {
         />
         <div className="row">
           <VideoTitleDescription
-            imgData={this.state.imgData[0]} />
+            imgData={this.state.imgData[this.state.currentVideo]} />
           <ul className="col-md-4 list-group">
             {this.state.imgData.map((data, index) => {
-              return <ListItem imgData={this.state.imgData[index]} />
+              return <ListItem 
+              imgData={this.state.imgData[index]}
+              currentVideo={index}
+              videoChoice={this.videoChoice.bind(this)} />
             })}
           </ul>
         </div>

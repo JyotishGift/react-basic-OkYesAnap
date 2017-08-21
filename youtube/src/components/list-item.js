@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 
 class ListItem extends Component {
     render() {
-        let { imgData } = this.props;
-        //console.log(imgData);
+        let { imgData, videoChoice, currentVideo} = this.props;
         return (
-            <li className="list-group-item">
+            <li className="list-group-item" id={currentVideo} onClick={videoChoice}>
                 <div className="video-list media">
                     <div className="video-list media">
                         <div className="media-left">

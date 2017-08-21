@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.searchingData = {};
-    this.state = { search: '', currentVideo: 0, imgData: [{}, {}, {}, {}, {}] };
+    this.state = { search: 'its a live!', currentVideo: 0, imgData: [{}, {}, {}, {}, {}] };
   }
   upDate() {
     YTSearch({ key: API_KEY, term: this.state.search },

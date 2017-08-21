@@ -28,7 +28,6 @@ class App extends Component {
             })
           })
         });
-//        console.log(data)
       });
   }
   searchChange(e) {
@@ -42,6 +41,7 @@ class App extends Component {
     return(elem.parentElement.id ? elem.parentElement.id : this.elemIdFinder(elem.parentElement));
   }
   render() {
+    this.upDate();
     return (
       <main className="container">
         <Search

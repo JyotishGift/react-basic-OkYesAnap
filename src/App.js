@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.searchingData = {};
-    this.state = { search: 'its a live!', currentVideo: 0, imgData: [{}, {}, {}, {}, {}] };
+    this.state = { search: 'its a live!', autoplay: "?autoplay=1", currentVideo: 0, imgData: [{}, {}, {}, {}, {}] };
   }
   upDate() {
     YTSearch({ key: API_KEY, term: this.state.search },
@@ -31,11 +31,11 @@ class App extends Component {
       });
   }
   searchChange(e) {
-    this.setState({ search: e.target.value });
+    this.setState({ search: e.target.value, autoplay:"" });
     this.upDate();
   }
   videoChoice(e){
-    this.setState({currentVideo: (e.target.id ? e.target.id : this.elemIdFinder(e.target))});
+    this.setState({currentVideo: (e.target.id ? e.target.id : this.elemIdFinder(e.target)), autoplay:""});
   }
   elemIdFinder(elem){
     return(elem.parentElement.id ? elem.parentElement.id : this.elemIdFinder(elem.parentElement));
@@ -50,6 +50,7 @@ class App extends Component {
         />
         <div className="row">
           <VideoTitleDescription
+            autoplay={this.state.autoplay}
             imgData={this.state.imgData[this.state.currentVideo]} />
           <ul className="col-md-4 list-group">
             {this.state.imgData.map((data, index) => {

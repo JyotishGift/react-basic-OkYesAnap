@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 class VideoTitleDescription extends Component {
   render() {
-    let imgSrc = "https://www.youtube.com/embed/" + this.props.imgData.videoId;
-    console.log(imgSrc);
+    let imgSrc = "https://www.youtube.com/embed/" + this.props.imgData.videoId + this.props.autoplay;
     return (
       <div className="video-detail col-md-8">
         <div className="embed-responsive embed-responsive-16by9">

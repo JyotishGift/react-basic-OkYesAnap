@@ -23,7 +23,14 @@ class App extends Component {
       name: 'Andrey',
       password: 'Parol'
     }
+    this.submit = this.submit.bind(this);
 }
+  submit(){
+    let nam = document.getElementById("name");
+    this.setState(() => {
+      console.log(this.state.name, this.state.password);
+      return {name:nam.value}});
+  }
   render() {
     let {name, password} = this.state;
     return (
@@ -33,6 +40,7 @@ class App extends Component {
         name={name}
         password={password}
         components={components}
+        submit={this.submit}
         />
         <Footer />
       </main>
